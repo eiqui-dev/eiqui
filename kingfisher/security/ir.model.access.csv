@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplier_info_public,res.partner.public,base.model_res_partner,,1,1,1,0
+access_email_template_info_public,email.template.public,email_template.model_email_template,,1,1,1,0
+access_distribution_list_public,_distribution.list.public,distribution_list.model_distribution_list,,1,1,1,0
+access_distribution_list_line_public,_distribution.list.line..public,distribution_list.model_distribution_list_line,,1,1,1,0
+access_mail_mail_public,mail.mail.public,mail.model_mail_mail,,1,1,1,0
+access_mail_message_public,mail.message.public,mail.model_mail_message,,1,1,1,0
+access_multiple_product_img,product.images.public,kingfisher.model_product_images,,1,0,0,0
+
+
+
+
