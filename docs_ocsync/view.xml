@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+<!-- FUNCTION que se invoca al instalar el modulo -->
+	<!-- function model="sync.server.action" name="create_server_action"/-->
+<!--  FORMS -->
+	<!-- FORM de document.directory -->
+	<record id="document_directory_owncloud_view_form" model="ir.ui.view">
+            <field name="name">Document Directory para Owncloud</field>
+            <field name="model">document.directory</field>                  
+            <field name="inherit_id" ref="document.view_document_directory_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='resource_find_all']" position="after">
+            		<group string="Sincronización Owncloud">
+            			<field name="path_owncloud"/>
+            			<field name="id_owncloud"/>
+            			<field name="gen_id_filename"/>            			
+            		</group>
+            	</xpath>
+            </field>
+    </record>
+	<!-- 
+	<record id="test_filestore_sync" model="ir.ui.view">
+		<field name="name">test_filestore_sync.form</field>
+		<field name="model">ir.attachment</field>
+		<field name="type">form</field>                    
+		<field name="arch" type="xml">
+		<form string="Sincronizacion de Documentos">                
+			<button name="test_filestore_sync" type="object" class="oe_highlight" string="Sincronizar Owncloud->Odoo" />              
+		</form>
+		</field>            
+	</record>
+       
+	<record id="action_test_sync_docs" model="ir.actions.act_window">
+		<field name="name">Sincronizar Documentos</field>
+		<field name="res_model">ir.attachment</field>
+		<field name="view_mode">form,tree</field>
+		<field name="view_type">form</field>
+		<field name="view_id" ref="aloxa_docs_ocsync.test_filestore_sync"/>			
+		<field name="target">new</field> 
+	</record>
+
+	<menuitem id="menu_test_sync_docs" name="Sincronizacion de Documentos"
+		      parent="document.menu_document_management_configuration"
+		      action="action_test_sync_docs"/>
+	-->
+	</data>
+</openerp>
