@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-# (c) 2016 Ainara Galdona <ainaragaldona@avanzosc.es> - Avanzosc S.L.
+# © 2016 Ainara Galdona <ainaragaldona@avanzosc.es> - Avanzosc S.L.
+# © 2016 Serv. Tecnol. Avanzados - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from openerp import models, fields, api
+from openerp.tools import config
 
 
 class StockInvoiceOnshipping(models.TransientModel):
@@ -111,24 +113,35 @@ class StockInvoiceOnshipping(models.TransientModel):
 
     @api.multi
     def create_invoice(self):
+        if (config['test_enable'] and
+                not self.env.context.get('test_picking_invoicing_unified')):
+            return super(StockInvoiceOnshipping, self).create_invoice()
         self.ensure_one()
         res = []
         (sale_pickings, sale_refund_pickings, purchase_pickings,
             purchase_refund_pickings) = self.get_split_pickings()
         if sale_pickings:
-            res += sale_pickings.action_invoice_create(
+            pickings = sale_pickings.with_context(
+                date_inv=self.invoice_date, inv_type='out_invoice')
+            res += pickings.action_invoice_create(
                 journal_id=self.sale_journal.id,
                 group=self.group, type='out_invoice')
         if sale_refund_pickings:
-            res += sale_refund_pickings.action_invoice_create(
+            pickings = sale_refund_pickings.with_context(
+                date_inv=self.invoice_date, inv_type='out_refund')
+            res += pickings.action_invoice_create(
                 journal_id=self.sale_refund_journal.id,
                 group=self.group, type='out_refund')
         if purchase_pickings:
-            res += purchase_pickings.action_invoice_create(
+            pickings = purchase_pickings.with_context(
+                date_inv=self.invoice_date, inv_type='in_invoice')
+            res += pickings.action_invoice_create(
                 journal_id=self.purchase_journal.id,
                 group=self.group, type='in_invoice')
         if purchase_refund_pickings:
-            res += purchase_refund_pickings.action_invoice_create(
+            pickings = purchase_refund_pickings.with_context(
+                date_inv=self.invoice_date, inv_type='in_refund')
+            res += pickings.action_invoice_create(
                 journal_id=self.purchase_refund_journal.id, group=self.group,
                 type='in_refund')
         return res
