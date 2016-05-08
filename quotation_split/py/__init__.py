@@ -1,3 +1,0 @@
-import sale_order
-import sale_configuration_setting
-import res_company
