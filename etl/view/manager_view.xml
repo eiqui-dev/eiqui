@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- SEARCH VIEW -->
+        <record id="view_etl_manager_filter" model="ir.ui.view">
+            <field name="name">etl.manager.select</field>
+            <field name="model">etl.manager</field>
+            <field name="arch" type="xml">
+                <search string="manager">
+                    <field name="name" string="Name"
+                            />
+                    <field name="source_hostname" string="Source Hostname"
+                            />
+                    <field name="source_database" string="Source Database"
+                            />
+                    <field name="target_hostname" string="Target Hostname"
+                            />
+                    <field name="target_database" string="Target Database"
+                            />
+                    <group expand="0" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_etl_manager_form" model="ir.ui.view">
+            <field name="name">etl.manager.form</field>
+            <field name="model">etl.manager</field>
+            <field name="arch" type="xml">
+                <form string="manager">
+                    <header>
+                        <button name="read_and_get" string="Read and get Records" class="oe_highlight" type="object"/>
+                        <button name="read_models" string="Read Models" type="object"/>
+                        <!-- <button name="order_source_models" string="Order Source Models" type="object"/> -->
+                        <button name="get_records" string="Get Records Number" type="object"/>
+                        <button name="match_models_and_order_actions" string="Match and Order" class="oe_highlight" type="object"/>
+                        <button name="match_models" string="Match Models" type="object"/>
+                        <button name="order_actions" string="Order Actions" type="object"/>
+                        <button name="run_actions" string="Run Actions" class="oe_highlight" type="object"/>
+                        <button name="read_active_source_models" string="Read Active Source Models" class="oe_highlight" type="object"/>
+                        <button name="run_repeated_actions" string="Run Repeating Actions" class="oe_highlight" type="object"/>
+                        <button name="delete_workflows" string="Delete Workflows" class="oe_highlight" type="object"/>
+                        <!-- <button name="update_workflows" string="Update Workflows" class="oe_highlight" type="object"/> -->
+                    </header>
+                    <sheet string="Manager">
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_inline" type="action" string="Actions"
+                                name="%(etl.action_etl_action_actions)d"
+                                context="{'search_default_manager_id': active_id}"/>
+                            <button class="oe_inline" type="action" string="Value Mapping Fields"
+                                name="%(etl.action_etl_value_mapping_field_value_mapping_fields)d"
+                                context="{'search_default_manager_id': active_id}"/>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="target_id_type"/>
+                        </group>
+                        <group col="6">
+                            <field name="source_hostname"
+                                />
+                            <field name="source_port"
+                                />
+                            <field name="source_database"
+                                />
+                            <field name="source_login"
+                                />
+                            <field name="source_password"
+                                password="True"
+                                />
+                            <field name="source_lang"
+                                />
+                            <newline/>
+                            <field name="target_hostname"
+                                />
+                            <field name="target_port"
+                                />
+                            <field name="target_database"
+                                />
+                            <field name="target_login"
+                                />
+                            <field name="target_password"
+                                password="True"
+                                />
+                            <field name="target_lang"
+                                />
+                            <newline/>
+                        </group>
+                        <group>
+                            <field name="workflow_models"/>
+                        </group>
+                        <notebook>
+                            <page string="Actions">
+                                <group col="1">
+                                    <field name="repeating_models"/>
+                                    <field name="action_ids" context="{'from_manager':True}"/>
+                                </group>
+                            </page>
+                            <page string="Exceptions">
+                                <group col="1">
+                                    <field name="model_exception_words"/>
+                                    <field name="model_disable_default"/>
+                                    <field name="model_analyze_default"/>
+                                    <field name="field_disable_default"/>
+                                    <field name="field_analyze_default"/>
+                                    <field name="field_disable_words"/>
+                                </group>
+                            </page>
+                            <page string="Log">
+                                <field name="log"/>
+                            </page>
+                            <page string="notes">
+                                <button name="install_modules" string="Install Modules" class="oe_highlight" type="object"/>
+                                <group>
+                                    <field name="modules_to_install"/>
+                                </group>
+                                <field name="note"/>
+                            </page>
+                            <page string="Value Mapping Fields">
+                                <field name="value_mapping_field_ids" context="{'default_manager_id':id, 'from_manager': True}"/>
+                            </page>
+                            <page string="External Models">
+                                <field name="external_model_ids" context="{'from_manager': True}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+        <record id="view_etl_manager_tree" model="ir.ui.view">
+            <field name="name">etl.manager.tree</field>
+            <field name="model">etl.manager</field>
+            <field name="arch" type="xml">
+                <tree string="manager"
+                    >
+                    <field name="name"
+                        />
+                    <field name="source_hostname"
+                        />
+                    <field name="source_database"
+                        />
+                    <field name="target_hostname"
+                        />
+                    <field name="target_database"
+                        />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_etl_manager_manager" model="ir.actions.act_window">
+            <field name="name">Manager</field>
+            <field name="res_model">etl.manager</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_etl_manager_tree"/>
+            <field name="search_view_id" ref="view_etl_manager_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click to create a Manager.</p>
+            </field>
+        </record>
+
+        <menuitem
+            name="Manager"
+            id="menu_manager"
+            sequence="10"
+            action="action_etl_manager_manager"
+            parent="menu_data"
+            />
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->
