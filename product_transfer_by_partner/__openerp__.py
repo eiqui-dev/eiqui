@@ -22,20 +22,23 @@
     'name': "product_transfer_by_partner",
 
     'summary': """
-        TODO""",
+        Smart Button to view products solds and return from partner form""",
 
     'description': """
-        TODO
+        This module create a smart button in the partner form to show the stock moves links with the partner. 
+	It also creates a filter for the lot, and displays the partner in the list view of the movements.
     """,
 
-    'author': "Solucions Aloxa S.L.",
+    'author': """Alejandro Díaz Cuadrado (eiqui.com -aloxa.eu-)
+		Darío Lodeiros Vázquez (eiqui.com -aloxa.eu-)
+		""",
     'website': "http://www.eiqui.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
     # for the full list
     'category': 'eiqui.com',
-    "icon": "/product_transfer_by_partner/static/src/img/vemotv_logo.png",    
+    "icon": "/product_transfer_by_partner/static/src/img/icon.png",    
     'version': '0.1',
 
     # any module necessary for this one to work correctly

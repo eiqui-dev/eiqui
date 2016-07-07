@@ -7,7 +7,8 @@
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-	    	<field name="context">{'search_default_partner_id': active_id,'default_partner_id': active_id}</field>           
+	    	<field name="context">{'search_default_partner_id': active_id,'default_partner_id': active_id}</field>
+	    	<field name="view_id" ref="stock.view_move_tree"/>           
      	</record>
    
 		<record id="view_partner_form" model="ir.ui.view">
@@ -16,8 +17,8 @@
 	        <field name="arch" type="xml">
 	        
 				<xpath expr="//div[@name='buttons']" position="inside">
-                    <button type="action" class="oe_stat_button" id="products_button" icon="fa-shopping-basket" name="%(product_transfer_by_partner.action_products_by_partner)d">
-                        <div><!--strong><field name="total_invoiced" widget="monetary"/></strong--><br/>Productos</div>
+                    <button type="action" class="oe_stat_button" id="products_button" icon="fa-shopping-cart" name="%(product_transfer_by_partner.action_products_by_partner)d">
+                        <div><field name="total_products" string="Products" widget="statinfo"/></div>
                     </button>
                 </xpath>
 							 	
