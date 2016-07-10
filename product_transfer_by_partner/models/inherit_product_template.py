@@ -21,21 +21,26 @@
 
 from openerp import models, fields, api
 
-class res_partner(models.Model):
-    _inherit = 'res.partner'
+class product_template(models.Model):
+    _inherit = 'product.template'
 
     @api.multi
     def _stock_move_count(self):
-        # The current user may not have access rights for stock moves
-        try:
-            for partner in self:
-                partner.total_products = len(partner.stock_move_ids) + len(partner.mapped('child_ids.stock_move_ids'))
-        except:
-            pass
+        res_partner_obj = self.env['res.partner']
+        
+        res = dict(map(lambda x:(x.id,0), self))
+        
+        res_partner_ids = res_partner_obj.search([])
+        for partner in res_partner_ids:
+            for product_tmpl in self:
+                for stock_move in partner.stock_move_ids:
+                    if stock_move.product_tmpl_id == product_tmpl:
+                        product_tmpl.total_partners += 1
+                        break
+        return res
 
     
-    total_products = fields.Integer(compute='_stock_move_count', string='Products', default=0)
-    stock_move_ids = fields.One2many('stock.move','partner_id','Stock Moves')
+    total_partners = fields.Integer(compute='_stock_move_count', string='Partners', default=0)
     
 
 

@@ -21,4 +21,5 @@
 ##############################################################################
 
 from . import inherit_res_partner
-
+from . import inherit_product_product
+from . import inherit_product_template

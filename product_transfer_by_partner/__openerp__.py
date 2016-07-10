@@ -29,7 +29,7 @@
 	It also creates a filter for the lot, and displays the partner in the list view of the movements.
     """,
 
-    'author': """Alejandro Díaz Cuadrado (eiqui.com -aloxa.eu-)
+    'author': """Alexandre Díaz Cuadrado (eiqui.com -aloxa.eu-)
 		Darío Lodeiros Vázquez (eiqui.com -aloxa.eu-)
 		""",
     'website': "http://www.eiqui.com",
@@ -45,13 +45,16 @@
     'depends': [
         'base',
         'sale',
+        'stock',
     ],
 
     # always loaded
     'data': [
         "views/inherit_res_partner.xml",
-	"views/inherit_stock_view_move_tree.xml",
-	"views/inherit_stock_move_search.xml",
+	    "views/inherit_stock_view_move_tree.xml",
+        "views/inherit_stock_move_search.xml",
+        "views/inherit_product_product.xml",
+        "views/inherit_product_template.xml",
     ],
     # only loaded in demonstration mode
     'demo': [        
