@@ -2,7 +2,7 @@
 #################################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2014 Solucións Aloxa S.L. <info@aloxa.eu>
+#    Copyright (C) 2016 Solucións Aloxa S.L. <info@aloxa.eu>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
