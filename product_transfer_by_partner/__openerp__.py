@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+##############################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2016 Solucións Aloxa S.L. <info@aloxa.eu>
@@ -17,7 +17,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+##############################################################################
 {
     'name': "product_transfer_by_partner",
 
@@ -26,7 +26,7 @@
 
     'description': """
         This module create a smart button in the partner form to show the stock moves links with the partner. 
-	It also creates a filter for the lot, and displays the partner in the list view of the movements.
+	    It also creates a filter for the lot, and displays the partner in the list view of the movements.
     """,
 
     'author': """Alexandre Díaz Cuadrado (eiqui.com -aloxa.eu-)
@@ -34,21 +34,16 @@
 		""",
     'website': "http://www.eiqui.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
-    # for the full list
-    'category': 'eiqui.com',
+    'category': 'Accounting &amp; Finance',
     "icon": "/product_transfer_by_partner/static/src/img/icon.png",    
     'version': '0.1',
 
-    # any module necessary for this one to work correctly
     'depends': [
         'base',
         'sale',
         'stock',
     ],
 
-    # always loaded
     'data': [
         "views/inherit_res_partner.xml",
 	    "views/inherit_stock_view_move_tree.xml",
@@ -56,7 +51,6 @@
         "views/inherit_product_product.xml",
         "views/inherit_product_template.xml",
     ],
-    # only loaded in demonstration mode
-    'demo': [        
-    ],
+
+    'demo': [],
 }

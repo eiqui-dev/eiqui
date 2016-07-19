@@ -50,7 +50,7 @@ class QWeb_less(orm.AbstractModel):
 
 
 class AssetsBundle(openerp.addons.base.ir.ir_qweb.AssetsBundle):
-    rx_preprocess_imports = re.compile("""(@import\s?['"]([^'"]+)['"](;?))""")
+    rx_preprocess_imports = re.compile(r"""(@import\s?['"]([^'"]+)['"](;?))""")
 
     def parse(self):
         fragments = html.fragments_fromstring(self.html)

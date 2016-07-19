@@ -582,7 +582,7 @@ class action(models.Model):
             vals = {'log': import_result}
         except:
             error = sys.exc_info()
-            print error
+            #print error
             vals = {'log': error}
 
         self.write(vals)
@@ -680,7 +680,7 @@ class action(models.Model):
             tz_name = context['tz']
         else:
             tz_name = self.env['res.users'].browse(SUPERUSER_ID).tz
-            print tz_name
+            #print tz_name
             #tz_name = tz_name[0]
         if tz_name:
             utc = pytz.timezone('UTC')

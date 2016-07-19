@@ -158,7 +158,7 @@ class field_mapping(models.Model):
                     if source_reference[0]:
                         source_reference_splited = source_reference[0][0].split(
                             '.', 1)
-                        print 'source_reference_splited', source_reference_splited
+                        #print 'source_reference_splited', source_reference_splited
                         if len(source_reference_splited) == 1:
                             module = False
                             external_ref = source_reference_splited[0]

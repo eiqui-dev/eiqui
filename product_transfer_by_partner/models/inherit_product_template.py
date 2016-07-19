@@ -28,8 +28,6 @@ class product_template(models.Model):
     def _stock_move_count(self):
         res_partner_obj = self.env['res.partner']
         
-        res = dict(map(lambda x:(x.id,0), self))
-        
         res_partner_ids = res_partner_obj.search([])
         for partner in res_partner_ids:
             for product_tmpl in self:
@@ -37,10 +35,10 @@ class product_template(models.Model):
                     if stock_move.product_tmpl_id == product_tmpl:
                         product_tmpl.total_partners += 1
                         break
-        return res
 
     
-    total_partners = fields.Integer(compute='_stock_move_count', string='Partners', default=0)
+    total_partners = fields.Integer(compute='_stock_move_count', 
+                                    string='Partners', default=0)
     
 
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+##############################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2016 Solucións Aloxa S.L. <info@aloxa.eu>
@@ -17,7 +17,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+##############################################################################
 
 from openerp import models, fields, api
 
@@ -29,17 +29,13 @@ class res_partner(models.Model):
         # The current user may not have access rights for stock moves
         try:
             for partner in self:
-                partner.total_products = len(partner.stock_move_ids) + len(partner.mapped('child_ids.stock_move_ids'))
+                partner.total_products = len(partner.stock_move_ids) + \
+                len(partner.mapped('child_ids.stock_move_ids'))
         except:
             pass
 
     
-    total_products = fields.Integer(compute='_stock_move_count', string='Products', default=0)
-    stock_move_ids = fields.One2many('stock.move','partner_id','Stock Moves')
-    
-
-
-
-
-
-
+    total_products = fields.Integer(compute='_stock_move_count', 
+                                    string='Products', default=0)
+    stock_move_ids = fields.One2many('stock.move', 'partner_id', 
+                                     'Stock Moves')

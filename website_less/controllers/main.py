@@ -129,7 +129,7 @@ class Website_less(Website):
                 model, id = record._name, record.id
             except:
                 raise werkzeug.exceptions.NotFound()
-                env.ref
+                #env.ref
             if model == 'ir.attachment' and not field:
                 if record.sudo().type == 'url':
                     field = "url"
