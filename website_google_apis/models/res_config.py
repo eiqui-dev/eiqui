@@ -19,21 +19,23 @@
 #
 ##############################################################################
 
-from openerp import models, fields
+from openerp.osv import fields, osv
 
 
-class website_config_settings(models.Model):
+class website_config_settings(osv.osv_memory):
     _inherit = 'website.config.settings'
     
-    recaptcha_site_key = fields.Char(
-        related='website_id.recaptcha_site_key',
-        string='reCAPTCHA Site Key')
-    recaptcha_private_key = fields.Char(
-        related='website_id.recaptcha_private_key',
-        string='reCAPTCHA Private Key')
-    google_maps_key = fields.Char(
-        related='website_id.google_maps_key',
-        string='Google Maps Key')
-    google_oauth2 = fields.Char(
-        related='website_id.google_oauth2',
-        string='Google OAuth 2.0 Key')
+    _columns = {
+        'recaptcha_site_key': fields.related(
+            'website_id', 'recaptcha_site_key', type="char",
+            string='reCAPTCHA Site Key'),
+        'recaptcha_private_key': fields.related(
+            'website_id', 'recaptcha_private_key', type="char",
+            string='reCAPTCHA Private Key'),
+        'google_maps_key': fields.related(
+            'website_id', 'google_maps_key', type="char",
+            string='Google Maps Key'),
+        'google_oauth2': fields.related(
+            'website_id', 'google_oauth2', type="char",
+            string='Google OAuth 2.0 Key'),
+    }
