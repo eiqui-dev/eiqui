@@ -12,19 +12,25 @@
                         <label for="recaptcha_site_key"/>
                         <div name="recaptcha_site_key">
                             <div class="oe_inline">
-                                <field name="recaptcha_site_key" placeholder="Your reCAPTCHA site key"/>
+                                <field name="recaptcha_site_key" placeholder="Your reCAPTCHA Site Key"/>
                             </div>
                         </div>
                         <label for="recaptcha_private_key"/>
                         <div name="recaptcha_private_key">
                             <div class="oe_inline">
-                                <field name="recaptcha_private_key" placeholder="Your reCAPTCHA private key"/>
+                                <field name="recaptcha_private_key" placeholder="Your reCAPTCHA Private Key"/>
                             </div>
                         </div>
                         <label for="google_maps_key"/>
                         <div name="google_maps_key">
                             <div class="oe_inline">
-                                <field name="google_maps_key" placeholder="Your Google Maps key"/>
+                                <field name="google_maps_key" placeholder="Your Google Maps Key"/>
+                            </div>
+                        </div>
+                        <label for="google_oauth2"/>
+                        <div name="google_oauth2">
+                            <div class="oe_inline">
+                                <field name="google_oauth2" placeholder="Your Google OAuth 2.0 Key"/>
                             </div>
                         </div>
                     </group>

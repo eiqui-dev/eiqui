@@ -7,6 +7,9 @@
  				<t t-if="website.google_maps_key">
  					<script type='text/javascript' t-attf-src="https://maps.googleapis.com/maps/api/js?key={{website.google_maps_key}}"></script>
  				</t>
+ 				<t t-if="website.google_oauth2">
+ 					<script type='text/javascript' src="https://apis.google.com/js/client.js"></script>
+ 				</t>
  				<t t-if="website.recaptcha_site_key and website.recaptcha_private_key">
 					<script type='text/javascript' src='https://www.google.com/recaptcha/api.js'></script>
 				</t>
@@ -23,9 +26,10 @@
                     <div name="goole_recaptcha">
                         <separator string="Google API's Keys"/>
                         <group name="social_media">
-                            <field name="recaptcha_site_key" placeholder="Your reCAPTCHA site key"/>
-                            <field name="recaptcha_private_key" placeholder="Your reCAPTCHA private key"/>
+                            <field name="recaptcha_site_key" placeholder="Your reCAPTCHA Site Key"/>
+                            <field name="recaptcha_private_key" placeholder="Your reCAPTCHA Private Key"/>
                             <field name="google_maps_key" placeholder="Your Google Maps Key"/>
+                            <field name="google_oauth2" placeholder="Your Google OAuth 2.0 Key"/>
                         </group>
                     </div>
                 </div>
