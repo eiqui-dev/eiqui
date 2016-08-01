@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+		<template id="google_apis" name="GoogleApiKeys" inherit_id="website.layout">
+	    	<xpath expr="//body" position="inside">
+ 				<t t-if="website.google_maps_key">
+ 					<script type='text/javascript' t-attf-src="https://maps.googleapis.com/maps/api/js?key={{website.google_maps_key}}"></script>
+ 				</t>
+ 				<t t-if="website.recaptcha_site_key and website.recaptcha_private_key">
+					<script type='text/javascript' src='https://www.google.com/recaptcha/api.js'></script>
+				</t>
+ 			</xpath>
+ 		</template>
+    	
+    
+        <record id="view_website_form" model="ir.ui.view">
+            <field name="name">website.form</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form" />
+            <field name="arch" type="xml">
+                <div name="social_media" position="after">
+                    <div name="goole_recaptcha">
+                        <separator string="Google API's Keys"/>
+                        <group name="social_media">
+                            <field name="recaptcha_site_key" placeholder="Your reCAPTCHA site key"/>
+                            <field name="recaptcha_private_key" placeholder="Your reCAPTCHA private key"/>
+                            <field name="google_maps_key" placeholder="Your Google Maps Key"/>
+                        </group>
+                    </div>
+                </div>
+            </field>
+        </record>
+        
+    </data>
+</openerp>
