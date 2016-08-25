@@ -21,7 +21,9 @@ Usage
 To use this module, you need to:
 
 1. Create new key in configuration panel
+
 2. Now the client need send the atribute 'key' in 'params':
+
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -31,8 +33,11 @@ To use this module, you need to:
     [...]
   }
 }
+
 3. Add to your controller:
+
    key_user_id = request.env['jsonrpc.keys'].sudo().check_key(THE_KEY, request.httprequest.path)
+   
    if not key_user_id:
    	raise Exception('Permission denied!')
 
