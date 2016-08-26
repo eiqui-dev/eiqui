@@ -53,7 +53,7 @@ class jsonrpc_keys(models.Model):
         return True
     
     
-    key = fields.Char(string='JSON-RPC Key', size=128, required=True, unique=True, track_visibility='onchange')
+    key = fields.Char(string='Key', size=128, required=True, unique=True, track_visibility='onchange')
     user_id = fields.Many2one('res.users', string='User', required=True, track_visibility='always')
     actived = fields.Boolean(string='Activated?', default=True, track_visibility='always')
     urls = fields.Char(string='URLs Affected', track_visibility='onchange')

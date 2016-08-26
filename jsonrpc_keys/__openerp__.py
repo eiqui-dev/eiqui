@@ -20,13 +20,13 @@
 ##############################################################################
 
 {
-    'name': 'JSON-RPC Service Key',
+    'name': 'JSON-RPC User Key',
     'version': '1.0',
     'author': "Alexandre Díaz (Aloxa Solucións S.L.) <alex@aloxa.eu>",
     'website': 'https://www.eiqui.com',
     'category': 'hidden',
     'sequence': 100,
-    'summary': 'Enable Key in JSON-RPC Call',
+    'summary': "Store Keys for use in anymous json-rpc calls",
     'depends': [
         'mail',
     ],
