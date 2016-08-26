@@ -44,12 +44,16 @@ To use this module, you need to:
 
     ``}``
 
-3. Add to your controller:
-
-	``key_user_id = request.env['jsonrpc.keys'].sudo().check_key(THE_KEY, request.httprequest.path)``
-   
-	``if not key_user_id:``
-		``raise Exception('Permission denied!')``
+3. Add to your controller route decorator:
+    jsonrpckey=True
+    
+    ``@http.route(['/mi/test'], type='json', auth="none", jsonrpckey=True)``
+    
+4. Now your controller can access to:
+    
+    ``request.jsonrpckey['user']``
+    
+    This is a 'res.users' record.
 
 
 
