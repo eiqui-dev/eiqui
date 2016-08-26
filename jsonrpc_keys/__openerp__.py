@@ -28,10 +28,11 @@
     'sequence': 100,
     'summary': 'Enable Key in JSON-RPC Call',
     'depends': [
-        'web',
         'mail',
-        'bus_enhanced',
     ],
+    'external_dependencies': {
+        'python': ['os','binascii']
+    },
     'data': [
         'views/actions.xml',
         'views/menus.xml',

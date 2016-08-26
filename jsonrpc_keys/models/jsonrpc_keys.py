@@ -19,10 +19,19 @@
 #
 ##############################################################################
 from openerp import models, fields, api, exceptions
+import os
+import binascii
 
 
 class jsonrpc_keys(models.Model):
     _name='jsonrpc.keys'
+    _inherit = ['mail.thread']
+    _track = {
+        'key': {},
+        'user_id': {},
+        'actived': {},
+        'urls': {},
+    }
     
     @api.v8
     def check_key(self, key, url):
@@ -38,9 +47,14 @@ class jsonrpc_keys(models.Model):
         
         return key_id.user_id
     
+    @api.one
+    def generate_key(self):
+        self.key = binascii.hexlify(os.urandom(32)).decode()
+        return True
     
-    key = fields.Char(string='JSON-RPC Key', size=128, required=True, unique=True)
-    user_id = fields.Many2one('res.users', string='User', required=True)
-    actived = fields.Boolean(string='Activated?', default=True)
-    urls = fields.Char(string='URLs Affected')
+    
+    key = fields.Char(string='JSON-RPC Key', size=128, required=True, unique=True, track_visibility='onchange')
+    user_id = fields.Many2one('res.users', string='User', required=True, track_visibility='always')
+    actived = fields.Boolean(string='Activated?', default=True, track_visibility='always')
+    urls = fields.Char(string='URLs Affected', track_visibility='onchange')
     
