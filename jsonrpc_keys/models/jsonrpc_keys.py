@@ -38,13 +38,11 @@ class jsonrpc_keys(models.Model):
         key_id = self.search([('key', '=', key), ('actived', '=', True)], limit=1)
         if not key_id:
             return None
-        
-        if len(key_id.urls) > 0:
+        if key_id.urls and len(key_id.urls) > 0:
             clean_url = url.split('?')[0]
             urls = key_id.urls.split('\n')
             if not clean_url in urls:
                 return None
-        
         return key_id.user_id
     
     @api.one
