@@ -44,7 +44,7 @@ class ir_http(orm.AbstractModel):
         key_id = None
         key_res = None
 
-        if request.jsonrpckey_enabled:
+        if request.jsonrpckey_enabled and request.httprequest.method == 'POST':
             key = None
             if request.params.has_key('key'):
                 key = request.params['key']
