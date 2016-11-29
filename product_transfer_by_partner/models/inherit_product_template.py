@@ -28,6 +28,8 @@ class product_template(models.Model):
     def _stock_move_count(self):
         res_partner_obj = self.env['res.partner']
         
+        # Recorremos todos los clientes para consultar sus movimientos de stock
+        # Solo nos importa si aparece una vez en la lista de movimientos
         res_partner_ids = res_partner_obj.search([])
         for partner in res_partner_ids:
             for product_tmpl in self:
