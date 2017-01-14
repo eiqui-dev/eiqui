@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+	<template id="generic_footer">
+		<div class="col-md-12 col-xs-12 company-addr">
+			<span t-esc="', '.join((o.company_id.street or '', o.company_id.street2 or ''))"/> – 
+			<span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/> (<span t-field="o.company_id.state_id.name"/>) – 
+			<span t-field="o.company_id.phone"/>  – 
+			<a t-attf-href="mailto:#{o.company_id.email}" t-field="o.company_id.email"/>
+		</div>
+		<div class="col-md-12 col-xs-12 text-muted" style="font-size:small;">
+			<div class="col-md-6 col-xs-6">
+				Code: <span t-field="o.name"/>;
+				Revision: <span t-esc="len(o.revisions)" />;
+				Date: <t t-usertime="%d/%m/%Y" />
+			</div>
+			<div class="col-md-6 col-xs-6" style="text-align:right;">
+				Page <span class="page"/> of <span class="topage"/>
+			</div>
+		</div>
+	</template>
+
+	<template id="external_layout_footer">
+		<div class="footer" style="vertical-align:bottom;">
+			<t t-set="lastRevision" t-value="len(o.revisions)-1"/>
+			<table class="table-info">
+				<thead>
+					<tr>
+						<th>Sale Order Nº</th>
+						<th t-esc="'Rev%d' % lastRevision"/>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Nº <span t-esc="'%s rev%d' % (o.name, lastRevision)" /></td>
+						<td><span t-field="o.revisions[lastRevision].date" t-field-options='{"format": "dd/MM/yy"}' /></td>
+					</tr>
+				</tbody>
+			</table>
+			<t t-call="sale_order_chapters.generic_footer"/>
+		</div>
+	</template>
+
+</data>
+</openerp>

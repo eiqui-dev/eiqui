@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+	<template id="report_sale_order_document">
+		<!-- COVER -->	
+		<div class="header" style="height:0; max-height:0;">&amp;nbsp;</div>
+		<div class="page">
+			<div id="cover" class="col-md-12 col-xs-12">
+				<img src="/logo.png" class="img"/>
+				<br/>
+				<h2>SALE ORDER Nº <span t-field="o.name"/></h2>
+				<h2>FOR</h2>
+				<h2>{{TT1}}</h2>
+				<br/>
+				<h4>CLIENT:</h4>
+				<h2 t-field="o.partner_id.name" />
+				<span class="pull-right" t-field="o.date_order" t-field-options='{"format": "dd/MM/yy"}'/>
+			</div>
+			<table class="col-md-12 col-xs-12 table-revs">
+				<thead>
+					<tr>
+						<th class="col-md-2 col-xs-2">Nº Revision</th>
+						<th class="col-md-2 col-xs-2">Date</th>
+						<th>Revision Reason</th>
+					</tr>
+				</thead>
+				<tbody>
+					<t t-set="revCount" t-value="0"/>
+					<tr t-foreach="o.revisions" t-as="rev">
+						<td t-esc="'Rev%d' % revCount" />
+						<td><span t-field="rev.date" /></td>
+						<td><span t-field="rev.reason" /></td>
+						<t t-set="revCount" t-value="revCount+1"/>
+					</tr>
+					<t t-if="len(o.revisions) &lt; 3">
+						<tr t-foreach="range(3-len(o.revisions))" t-as="i">
+							<td>&amp;nbsp;</td><td>&amp;nbsp;</td><td>&amp;nbsp;</td>
+						</tr>
+					</t>
+				</tbody>
+			</table>
+		</div>
+		<div class="footer">
+			<t t-call="sale_order_chapters.generic_footer"/>
+		</div>
+		
+		<!-- ORDER SALE PAGES -->
+		<t t-set="lines" t-value="o.order_line.sorted(key=lambda r:r.chapter_id.seq)" />
+		<t t-set="chapters" t-value="request.env['sale_order_chapters.chapter'].search([('id', 'in', lines.mapped('chapter_id.id'))], order='seq ASC')"/>
+		<t t-set="numChapters" t-value="1" />
+		<t t-foreach="chapters" t-as="c">
+			<t t-call="sale_order_chapters.external_layout">
+				<div class="page">
+					<table class="col-md-12 col-xs-12 table-chapter">
+						<thead>
+							<tr>
+								<th class="text-center">CONCEPT</th>
+								<th class="text-center">Uds.</th>
+								<th class="text-center">Price</th>
+								<th class="text-center">TOTAL</th>
+							</tr>
+							<tr class="chapter-title"><th colspan="4" t-esc="'%d. %s' % (numChapters, c.name.upper())" /></tr>
+						</thead>
+						<tbody>
+							<t t-set="lines_r" t-value="lines.search([('order_id','=',o.id),('chapter_id', '=', c.id)])"/>
+							<t t-set="numLines" t-value="1"/>
+							<tr t-foreach="lines_r" t-as="l">
+								<td><strong t-esc="'%d.%d.- %s' % (numChapters, numLines, l.name)"/><br/><t t-esc="l.product_id.description"/></td>
+								<td class="text-center" style="vertical-align:middle;"><strong t-esc="'%d Ud.' % l.product_uom_qty"/></td>
+								<td class="text-center" style="vertical-align:middle;"><strong t-esc="'%.2f %s/Ud.' % (l.price_unit, o.currency_id.symbol)"/></td>
+								<td class="text-center" style="vertical-align:middle;"><strong t-esc="'%.2f %s' % (l.price_subtotal, o.currency_id.symbol)" /></td>
+								<t t-set="numLines" t-value="numLines+1"/>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</t>
+			<t t-set="numChapters" t-value="numChapters+1" />
+		</t>
+	</template> 
+
+</data>
+</openerp>

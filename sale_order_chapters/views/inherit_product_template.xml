@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+		
+	    <record id="view_sale_order_revision_product_template_inherit_form" model="ir.ui.view">
+	        <field name="model">product.template</field>
+	        <field name="inherit_id" ref="product.product_template_form_view" /> 
+	        <field name="arch" type="xml">
+	        	<xpath expr="//field[@name='type']" position="after">
+	        		<field name="chapter_id"/>
+	        	</xpath>			 	
+	        </field>
+	    </record>
+		
+	</data>
+</openerp>

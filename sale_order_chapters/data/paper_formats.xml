@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="paperformat_euro_sale_order_chapters" model="report.paperformat">
+            <field name="name">Paper Sale Order Chapters</field>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">35</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+        </record>
+        
+        <record id="sale.report_sale_order" model="ir.actions.report.xml">
+        	<field name="paperformat_id" ref="sale_order_chapters.paperformat_euro_sale_order_chapters" />
+        </record>
+        
+	</data>
+</openerp>
