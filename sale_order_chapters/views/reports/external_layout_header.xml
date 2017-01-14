@@ -7,7 +7,7 @@
 			<table class="col-md-12 col-xs-12 table-head">
 				<tbody>
 					<tr>
-						<td class="col-md-4 col-xs-4"><img src="/logo.png" class="img img-responsive" /></td>
+						<td class="col-md-4 col-xs-4"><img src="/logo.png" class="img img-responsive img-small" /></td>
 						<td class="col-md-4 col-xs-4 text-center"><strong>SALE ORDER</strong></td>
 						<td class="col-md-4 col-xs-4" id="certs">&amp;nbsp;</td>
 					</tr>
