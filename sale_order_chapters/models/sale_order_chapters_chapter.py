@@ -22,6 +22,7 @@ from openerp import models, fields
 
 class sale_order_revision_chapter(models.Model):
     _name='sale_order_chapters.chapter'
+    _order='seq ASC'
     
     name = fields.Char(string="Name", size=128, required=True)
     seq = fields.Integer(string="Sequence", default=1)

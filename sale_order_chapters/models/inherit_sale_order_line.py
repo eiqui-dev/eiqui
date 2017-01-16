@@ -49,5 +49,5 @@ class sale_order_line(osv.osv):
         return res
     
     _columns = {
-        'chapter_id': fields.many2one('sale_order_chapters.chapter', 'Chapter')
+        'chapter_id': fields.many2one('sale_order_chapters.chapter', 'Chapter', required=True)
     }

@@ -17,21 +17,6 @@
 				color: rgb(148,54,52);
 			}
 			
-			.table-info {
-				margin: 0 auto;
-				margin-bottom: 1em;
-			}
-			
-			.table-info th {
-				background-color: gray;
-				font-weight: normal;
-			}
-			.table-info th, .table-info td {
-				text-align: center;
-				padding:3px;
-				border:1px solid black;
-			}
-			
 			.table-head {
 				border: 0 solid rgb(148,54,52);
 				border-width: 0 0 2px 0;
@@ -39,11 +24,6 @@
 			}
 			.table-head td {
 				vertical-align: middle;
-			}
-			
-			.table-revs th, .table-revs td {
-				padding:3px;
-				border:1px solid black;
 			}
 			
 			.company-addr {
@@ -56,6 +36,11 @@
 				border: 1px solid black;
 				padding: 5px;
 				margin-bottom: 1.5em;
+			}
+			
+			.footer {
+				display: table-cell;
+				vertical-align: bottom;
 			}
 		</t></xpath>
 	</template>
