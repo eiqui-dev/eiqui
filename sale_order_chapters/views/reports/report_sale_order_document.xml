@@ -28,10 +28,10 @@
 				<table class="col-md-12 col-xs-12 table-chapter">
 					<thead>
 						<tr>
-							<th class="text-center">CONCEPT</th>
-							<th class="text-center">Uds.</th>
-							<th class="text-center">Price</th>
-							<th class="text-center">TOTAL</th>
+							<th class="col-md-6 col-xs-6 text-center">CONCEPT</th>
+							<th class="col-md-2 col-xs-2 text-center">Uds.</th>
+							<th class="col-md-2 col-xs-2 text-center">Price</th>
+							<th class="col-md-2 col-xs-2 text-center">TOTAL</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,7 +42,7 @@
 							<t t-set="lines_r" t-value="request.env['sale.order.line'].search([('order_id','=',o.id),('chapter_id', '=', c.id)])"/>
 							<t t-set="numLines" t-value="1"/>
 							<tr t-foreach="o.order_line" t-as="l">
-								<td><strong t-esc="'%d.%d.- %s %s' % (numChapters, numLines, l.product_id.uom_id.name, l.name)"/><br/><t t-esc="l.product_id.description"/></td>
+								<td><strong t-esc="'%d.%d.- %s %s' % (numChapters, numLines, l.product_id.uom_id.name, l.product_id.name)"/><br/><t t-esc="l.product_id.description_sale"/></td>
 								<td class="text-center" style="vertical-align:middle;"><strong t-esc="'%d Ud.' % l.product_uom_qty"/></td>
 								<td class="text-center" style="vertical-align:middle;"><strong><span t-field="l.price_unit" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>/Ud.</strong></td>
 								<td class="text-center" style="vertical-align:middle;"><strong t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}' /></td>
