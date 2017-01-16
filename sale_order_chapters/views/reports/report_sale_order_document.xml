@@ -42,7 +42,8 @@
 							<t t-set="lines_r" t-value="request.env['sale.order.line'].search([('order_id','=',o.id),('chapter_id', '=', c.id)])"/>
 							<t t-set="numLines" t-value="1"/>
 							<tr t-foreach="o.order_line" t-as="l">
-								<td><strong t-esc="'%d.%d.- %s %s' % (numChapters, numLines, l.product_id.uom_id.name, l.product_id.name)"/><br/><t t-esc="l.product_id.description_sale"/></td>
+								<t t-set="line_name_desc" t-value="l.get_name_description()[0]"/>
+								<td><strong t-esc="'%d.%d.- %s %s' % (numChapters, numLines, l.product_id.uom_id.name, line_name_desc[0])"/><br/><t t-esc="line_name_desc[1]"/></td>
 								<td class="text-center" style="vertical-align:middle;"><strong t-esc="'%d Ud.' % l.product_uom_qty"/></td>
 								<td class="text-center" style="vertical-align:middle;"><strong><span t-field="l.price_unit" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>/Ud.</strong></td>
 								<td class="text-center" style="vertical-align:middle;"><strong t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}' /></td>

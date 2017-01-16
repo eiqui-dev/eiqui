@@ -41,6 +41,13 @@ class sale_order_line(osv.osv):
             res['value'].update({'chapter_id': product_obj.chapter_id.id or False})
         return res
             
+    def get_name_description(self, cr, uid, ids, context=None):
+        res = []
+        orders = self.browse(cr, uid, ids, context=context)
+        for order in orders:
+            name_split = order.name.split('\n')
+            res.append((name_split[0], '\n'.join(name_split[1::])))
+        return res
 
     def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
         res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr, uid, line, account_id=account_id, context=context)
