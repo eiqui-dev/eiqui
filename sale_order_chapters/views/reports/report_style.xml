@@ -4,12 +4,11 @@
 
 	<template id="style" inherit_id="report.style">
 		<xpath expr="."><t>
-			.table-chapter {
-				border: 1px solid black;
-			}
 			.table-chapter td, .table-chapter th {
-				border: 1px solid black;
 				padding: 5px;
+			}
+			.table-chapter td {
+				border: 0 solid transparent !important;
 			}
 			
 			.chapter-title {
@@ -18,8 +17,6 @@
 			}
 			
 			.table-head {
-				border: 0 solid rgb(148,54,52);
-				border-width: 0 0 2px 0;
 				margin-bottom: 1.5em;
 			}
 			.table-head td {
@@ -33,7 +30,6 @@
 			
 			#cover {
 				text-align: center;
-				border: 1px solid black;
 				padding: 5px;
 				margin-bottom: 1.5em;
 			}

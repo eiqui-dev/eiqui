@@ -29,7 +29,13 @@
     'category': '',
     'summary': "Group Invoice Lines by Chapter",
     'description': "",
-    'depends': ['sale','report', 'product', 'qweb_usertime'],
+    'depends': [
+        'sale',
+        'report',
+        'product',
+        'qweb_usertime',
+        #'report_qweb_element_page_visibility'
+    ],
     'data': [
         'views/reports/external_layout_footer.xml',
         'views/reports/external_layout_header.xml',

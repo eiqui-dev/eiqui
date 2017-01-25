@@ -15,7 +15,7 @@
 	</template>
 
 	<template id="external_layout_footer">
-		<div class="footer col-md-12 col-xs-12">
+		<div class="footer col-md-12 col-xs-12" style="font-size:xx-small;">
 			<t t-call="sale_order_chapters.generic_footer"/>
 		</div>
 	</template>
