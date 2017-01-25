@@ -61,13 +61,13 @@
 							</t>
 							<tr>
 								<td colspan="5" class="text-right" style="vertical-align:middle;"><strong t-esc="u'Total Initial Sale Order Num.%d OPTION %d: %s' % (numChapters, numChapters, c.name.upper())" /></td>	
-								<td class="text-right" style="vertical-align:middle; border:1px solid black; border-witdh: 1px 0 0 0;"><strong style="font-size:large;" t-esc="'%.2f%s' % (totalSubPrice, o.currency_id.symbol or '')" /></td>
+								<td class="text-right" style="vertical-align:middle; border:1px solid black; border-witdh: 1px 0 0 0;"><strong style="font-size:14px;" t-esc="'%.2f%s' % (totalSubPrice, o.currency_id.symbol or '')" /></td>
 							</tr>
 						</tbody>
 					</table>
 					<!-- PAGE BREAK -->
+					<div>&amp;nbsp;</div> <!-- FORCE IT! -->
 					<p style="page-break-before:always;"> </p>
-					<p style="page-break-after:always;"> </p>
 					<!-- -->
 					<t t-set="numChapters" t-value="numChapters+1" />
 				</t>
