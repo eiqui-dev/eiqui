@@ -6,6 +6,7 @@
 	    	<xpath expr="//body" position="inside">
  				<t t-if="website.google_maps_key">
  					<script type='text/javascript' t-attf-src="https://maps.googleapis.com/maps/api/js?key={{website.google_maps_key}}"></script>
+ 					<script type='text/javascript' src="/website_google_apis/static/src/js/markerclusterer.js"></script>
  				</t>
  				<t t-if="website.google_oauth2">
  					<script type='text/javascript' src="https://apis.google.com/js/client.js"></script>
