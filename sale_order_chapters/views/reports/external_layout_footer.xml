@@ -4,7 +4,7 @@
 
 	<template id="generic_footer">
 		<div class="col-md-12 col-xs-12 company-addr" t-if="o.company_id.custom_footer" style="font-size:xx-small;">
-			<span t-field="o.company_id.rml_footer" />
+			<span t-raw="o.company_id.rml_footer"/>
 		</div>
 		<div class="col-md-12 col-xs-12 text-muted" style="font-size:xx-small;">
 			<div class="col-md-6 col-xs-6" id="left_footer"></div>
