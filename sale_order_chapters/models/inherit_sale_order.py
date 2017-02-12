@@ -18,7 +18,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import sale_order_chapters_chapter
-from . import inherit_sale_order_line
-from . import inherit_product_template
-from . import inherit_sale_order
+from openerp.osv import fields, osv
+
+class sale_order(osv.osv):
+    _inherit = 'sale.order'
+    
+    _columns = {
+        'revision_note': fields.char('Notas de Revision')
+    }

@@ -11,9 +11,13 @@
 	        	</xpath>
 	        	<xpath expr="//form/group/group/field[@name='product_id']" position="after">
 	        		<field name="chapter_id"/>
+	        	</xpath>
+	        	<xpath expr="//field[@name='note']" position="after">
+	        		<field name="revision_note"/>
 	        	</xpath>			 	
 	        </field>
 	    </record>
+	    
 		
 	</data>
 </openerp>
