@@ -30,8 +30,9 @@
 			
 			#cover {
 				text-align: center;
-				padding: 5px;
-				margin-bottom: 1.5em;
+				padding: 5px;                               
+				margin-bottom: 2em;
+                border: 1px solid black;                 
 			}
 			
 			.footer {

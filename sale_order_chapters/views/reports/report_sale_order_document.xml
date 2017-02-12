@@ -3,20 +3,20 @@
 <data>
 
 	<template id="report_sale_order_document">
-		<!-- COVER -->	
-		<div class="header" id="header_cover"> </div>
-		<div class="page">
-			<div id="cover" class="col-md-12 col-xs-12">
-				<img src="/logo.png" class="img"/>
-				<br/>
-				<span t-if="o.state not in ['draft','sent']"><h2>Sale Order Nº <span t-field="o.name"/></h2></span>
-               		        <span t-if="o.state in ['draft','sent']"><h2>Quotation Nº <span t-field="o.name"/></h2></span>
-				<br/>
-				<h4>CLIENT:</h4>
-				<h2 t-field="o.partner_id.name" />
-				<span class="pull-right" t-field="o.date_order" t-field-options='{"format": "dd/MM/yy"}'/>
+		<!-- COVER -->
+        <div class="header" id="header_cover">  </div>
+        	<div class="page">	
+	        	<div id="cover" class="col-md-12 col-xs-12">				
+                	<img src="/logo.png" class="img"/>
+					<br/><br/>
+					<span t-if="o.state not in ['draft','sent']"><h3>Sale Order Nº <span t-field="o.name"/></h3></span>
+               		<span t-if="o.state in ['draft','sent']"><h3>Quotation Nº <span t-field="o.name"/></h3></span>
+					<br/>
+					<h4>CLIENT:</h4>
+					<h3 t-field="o.partner_id.name"/><br/><br/><br/>
+					<span class="pull-right" t-field="o.date_order" t-field-options="{&quot;format&quot;: &quot;dd/MM/yy&quot;}"/>
+				</div>         
 			</div>
-		</div>
 		<div class="footer col-md-12 col-xs-12" style="font-size:xx-small;">
 			<t t-call="sale_order_chapters.generic_footer"/>
 		</div>
@@ -25,9 +25,9 @@
 		<t t-call="sale_order_chapters.external_layout">
 			<div class="page">
 				<t t-set="chapters" t-value="request.env['sale_order_chapters.chapter'].search([('id', 'in', o.order_line.mapped('chapter_id.id'))], order='seq ASC')"/>
-				<t t-set="numChapters" t-value="1" />
+				<t t-set="numChapters" t-value="1"/>
 				<t t-foreach="chapters" t-as="c">
-					<strong t-esc="'Initial Sale Order Num.%d OPTION %d: %s' % (numChapters, numChapters, c.name.upper())" />
+					<strong t-esc="'%s' % (c.name.upper())"/>
 					<table class="col-md-12 col-xs-12 table-chapter table table-condensed">
 						<thead>
 							<tr>
@@ -47,22 +47,22 @@
 								<tr>
 									<t t-set="line_name_desc" t-value="l.get_name_description()[0]"/>
 									<td><strong t-esc="'%d.%d' % (numChapters, numLines)"/></td>
-									<td><strong t-esc="l.product_id.uom_id.name.upper()" /></td>
+									<td><strong t-esc="l.product_id.uom_id.name.upper()"/></td>
 									<td colspan="3"><span t-field="l.name"/></td>
 									<td>&amp;nbsp;</td>
 								</tr>
 								<tr>
 									<td colspan="3" class="text-right"><strong>Total <span t-field="l.product_id.uom_id.name"/> ... ...:</strong></td>
 									<td class="text-center"><strong t-field="l.product_uom_qty"/></td>
-									<td class="text-center"><strong t-field="l.price_unit" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
-									<td class="text-right"><strong t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}' /></td>
+									<td class="text-center"><strong t-field="l.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></td>
+									<td class="text-right"><strong t-field="l.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></td>
 									<t t-set="totalSubPrice" t-value="totalSubPrice+l.price_subtotal"/>
 								</tr>
 								<t t-set="numLines" t-value="numLines+1"/>
 							</t>
 							<tr>
-								<td colspan="5" class="text-right" style="vertical-align:middle;"><strong t-esc="u'Total Initial Sale Order Num.%d OPTION %d: %s' % (numChapters, numChapters, c.name.upper())" /></td>	
-								<td class="text-right" style="vertical-align:middle; border:1px solid black; border-witdh: 1px 0 0 0;"><strong style="font-size:14px;" t-esc="'%.2f%s' % (totalSubPrice, o.currency_id.symbol or '')" /></td>
+								<td colspan="5" class="text-right" style="vertical-align:middle;"><strong t-esc="u'Total Presupuesto Parcial Num.%d OPCION %d: %s' % (numChapters, numChapters, c.name.upper())"/></td>	
+								<td class="text-right" style="vertical-align:middle; border:1px solid black; border-witdh: 1px 0 0 0;"><strong style="font-size:14px;" t-esc="'%.2f%s' % (totalSubPrice, o.currency_id.symbol or '')"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -70,7 +70,7 @@
 					<div>&amp;nbsp;</div> <!-- FORCE IT! -->
 					<p style="page-break-before:always;"> </p>
 					<!-- -->
-					<t t-set="numChapters" t-value="numChapters+1" />
+					<t t-set="numChapters" t-value="numChapters+1"/>
 				</t>
 				<span class="page-end"> </span>
 			</div>
