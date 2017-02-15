@@ -14,27 +14,24 @@
 			.chapter-title {
 				background-color:lightgray;
 				color: rgb(148,54,52);
-			}
-			
+			}			
 			.table-head {
 				margin-bottom: 1.5em;
 			}
 			.table-head td {
 				vertical-align: middle;
-			}
-			
+			}			
 			.company-addr {
 				font-size: small;
 				text-align: center;
-			}
-			
+			}			
 			#cover {
 				text-align: center;
 				padding: 5px;                               
 				margin-bottom: 2em;
-                border: 1px solid black;                 
-			}
-			
+                border: 1px solid black;
+                height: 700px;
+			}			
 			.footer {
 				display: table-cell;
 				vertical-align: bottom;

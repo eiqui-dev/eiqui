@@ -37,6 +37,7 @@
         #'report_qweb_element_page_visibility'
     ],
     'data': [
+	'security/ir.model.access.csv',
         'views/reports/external_layout_footer.xml',
         'views/reports/external_layout_header.xml',
         'views/reports/external_layout.xml',
