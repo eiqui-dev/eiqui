@@ -7,7 +7,7 @@
         <div class="header" id="header_cover">  </div>
        	<div class="page">	
         	<div id="cover" class="col-md-12 col-xs-12">				
-               	<img src="/logo.png" class="img"/>
+               	<img style="margin-top:70px" src="/logo.png" class="img"/>
 		     	<br/><br/>
 		       	<span t-if="o.state not in ['draft','sent']"><h3>Sale Order Nº <span t-field="o.name"/></h3></span>
               		<span t-if="o.state in ['draft','sent']"><h3>Quotation Nº <span t-field="o.name"/></h3></span>
