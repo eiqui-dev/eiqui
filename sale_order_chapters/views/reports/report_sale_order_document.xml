@@ -7,7 +7,7 @@
         <div class="header" id="header_cover">  </div>
        	<div class="page">	
         	<div id="cover" class="col-md-12 col-xs-12">				
-               	<img src="/logo.png" class="img"/>
+               	<img style="margin-top:70px" src="/logo.png" class="img"/>
 		     	<br/><br/>
 		       	<span t-if="o.state not in ['draft','sent']"><h3>Sale Order Nº <span t-field="o.name"/></h3></span>
               		<span t-if="o.state in ['draft','sent']"><h3>Quotation Nº <span t-field="o.name"/></h3></span>
@@ -49,12 +49,12 @@
 								<tr>
 									<t t-set="line_name_desc" t-value="l.get_name_description()[0]"/>
 									<td><strong t-esc="'%d.%d' % (numChapters, numLines)"/></td>
-									<td><strong t-esc="l.product_id.uom_id.name.upper()"/></td>
+									<td><strong t-esc="product_uom.name"/></td>
 									<td colspan="3"><span t-field="l.name"/></td>
 									<td>&amp;nbsp;</td>
 								</tr>
 								<tr>
-									<td colspan="3" class="text-right"><strong>Total <span t-field="l.product_id.uom_id.name"/> ... ...:</strong></td>
+									<td colspan="3" class="text-right"><strong>Total <span t-field="l.product_uom.name"/> ... ...:</strong></td>
 									<td class="text-center"><strong t-field="l.product_uom_qty"/></td>
 									<td class="text-center"><strong t-field="l.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></td>
 									<td class="text-right"><strong t-field="l.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></td>

@@ -14,6 +14,7 @@
 	        	</xpath>
 	        	<xpath expr="//field[@name='note']" position="after">
 	        		<field name="revision_note"/>
+				<label for="revision_note" string="Notas de revisión"/>
 	        	</xpath>			 	
 	        </field>
 	    </record>
