@@ -28,8 +28,7 @@
 			<div class="page">
 				<t t-set="chapters" t-value="request.env['sale_order_chapters.chapter'].search([('id', 'in', o.order_line.mapped('chapter_id.id'))], order='seq ASC')"/>
 				<t t-set="numChapters" t-value="1"/>
-				<t t-foreach="chapters" t-as="c">
-					<p style="page-break-before:always;"> </p> <!-- PAGE BREAK -->
+				<div style="page-break-before:always; clear:both" t-foreach="chapters" t-as="c">
 					<strong t-esc="'%s' % (c.name.upper())"/>
 					<table class="col-md-12 col-xs-12 table-chapter table table-condensed">
 						<thead>
@@ -70,7 +69,7 @@
 						</tbody>
 					</table>
 					<t t-set="numChapters" t-value="numChapters+1"/>
-				</t>
+				</div>
 				<span class="page-end"> </span>
 			</div>
 		</t>
