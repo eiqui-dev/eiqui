@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
 	<data>
-		<record id="stock.action_report_picking" model="ir.actions.report.xml">
-			<field name="report_name" ref="report_picking_translate.report_picking_translate"/>
-		</record>
+
+
+        <report 
+            string="Picking Translate" 
+            id="action_report_picking_translate" 
+            model="stock.picking" 
+            report_type="qweb-pdf"
+            name="report_picking_translate.report_picking_translate" 
+            file="stock.report_picking_translate" 
+        />
+
+
 	</data>
 </openerp>

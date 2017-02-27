@@ -4,9 +4,11 @@
 Report picking translate
 =============
 
-Make translate report picking with de partner lang
+Make translate report picking with the partner lang
 
-
+Use
+===
+Create new report in Picking Form (button "more") called "Picking Translate"
 
 Credits
 =======
