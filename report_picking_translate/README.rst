@@ -3,8 +3,8 @@
 
 Report picking translate
 =============
+Make translate report picking using the partner lang
 
-Make translate report picking with the partner lang
 
 Use
 ===

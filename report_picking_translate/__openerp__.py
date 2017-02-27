@@ -33,8 +33,8 @@
         'stock',
     ],
     'data': [
-	'data/report_picking.xml',
         'views/report_picking_translate.xml',
+	'data/report_picking.xml',
     ],
     'test': [
     ],
