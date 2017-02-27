@@ -4,7 +4,7 @@
 Report picking translate
 =============
 
-Make translate report picking with de partner lang
+Make translate report picking using the partner lang
 
 
 
