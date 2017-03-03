@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_employer_chapters_sale_order,User Chapter,sale_order_chapters.model_sale_order_chapters_chapter,base.group_user,1,1,1,1
