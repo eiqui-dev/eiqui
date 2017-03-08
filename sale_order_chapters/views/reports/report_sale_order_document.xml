@@ -13,7 +13,12 @@
               		<span t-if="o.state in ['draft','sent']"><h3>Quotation Nº <span t-field="o.name"/></h3></span>
 	 	        <br/>
 				<h4>CLIENT:</h4>
-				<h3 style="padding-left:150px;padding-right:150px;" t-field="o.partner_id.name"/><br/><br/><br/>
+				<span t-if="o.partner_id.parent_id">                             
+				                   <h3 style="padding-left:150px;padding-right:150px;" t-field="o.partner_id.parent_id.name"/><br/><br/><br/>
+                                </span>
+                                <span t-if="not o.partner_id.parent_id">                             
+				                   <h3 style="padding-left:150px;padding-right:150px;" t-field="o.partner_id.name"/><br/><br/><br/>
+                                </span>
 				<span style="position:absolute;bottom:0;right:0;margin-bottom:3px;margin-right:3px;" t-field="o.date_order" t-field-options="{&quot;format&quot;: &quot;dd/MM/yy&quot;}"/>
 			</div>         
 		</div>
