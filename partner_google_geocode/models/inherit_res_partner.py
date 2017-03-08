@@ -18,24 +18,26 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import models, fields, api
+import googlemaps
+import logging
 
-from openerp.osv import fields, osv
+_logger = logging.getLogger(__name__)
 
 
-class website_config_settings(osv.osv_memory):
-    _inherit = 'website.config.settings'
+class res_partner(models.Model):
+    _inherit = ['res.partner']
 
-    _columns = {
-        'recaptcha_site_key': fields.related(
-            'website_id', 'recaptcha_site_key', type="char",
-            string='reCAPTCHA Site Key'),
-        'recaptcha_private_key': fields.related(
-            'website_id', 'recaptcha_private_key', type="char",
-            string='reCAPTCHA Private Key'),
-        'google_maps_key': fields.related(
-            'website_id', 'google_maps_key', type="char",
-            string='Google Maps Key'),
-        'google_oauth2': fields.related(
-            'website_id', 'google_oauth2', type="char",
-            string='Google OAuth 2.0 Key'),
-    }
+    @api.multi
+    def get_gelocation(self):
+        website_id = self.env['website'].browser([1])
+        gooClient = googlemaps.Client(key=website_id.google_maps_key)
+        for record in self:
+            address = self._display_address(record, without_company=True)
+            gooRes = gooClient.geocode(address=address)
+            _logger.info(gooRes)
+            self.geo_lat = gooRes[0]
+            record.geo_lon = gooRes[1]
+
+    geo_lat = fields.Float(string="Latitude", default=0.0)
+    geo_lon = fields.Float(string="Longitude", default=0.0)

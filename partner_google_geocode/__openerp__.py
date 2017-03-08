@@ -19,23 +19,27 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, osv
-
-
-class website_config_settings(osv.osv_memory):
-    _inherit = 'website.config.settings'
-
-    _columns = {
-        'recaptcha_site_key': fields.related(
-            'website_id', 'recaptcha_site_key', type="char",
-            string='reCAPTCHA Site Key'),
-        'recaptcha_private_key': fields.related(
-            'website_id', 'recaptcha_private_key', type="char",
-            string='reCAPTCHA Private Key'),
-        'google_maps_key': fields.related(
-            'website_id', 'google_maps_key', type="char",
-            string='Google Maps Key'),
-        'google_oauth2': fields.related(
-            'website_id', 'google_oauth2', type="char",
-            string='Google OAuth 2.0 Key'),
-    }
+{
+    'name': 'Partner Google Geolocation',
+    'version': '1.0',
+    'author': "Alexandre Díaz (Aloxa Solucións S.L.) <alex@aloxa.eu>",
+    'website': 'https://www.eiqui.com',
+    'category': 'Geolocation',
+    'summary': "Request google service for partner address geolocation",
+    'description': "Request google service for partner address geolocation",
+    'depends': [
+        'website_google_apis',
+    ],
+    'external_dependencies': {
+        'python': ['googlemaps']
+    },
+    'data': [
+        'views/inherit_res_partner.xml'
+    ],
+    'test': [
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+    'license': 'AGPL-3',
+}
