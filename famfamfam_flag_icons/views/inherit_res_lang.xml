@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+		<record model="ir.ui.view" id="res_lang_flag_form">
+		    <field name="name">res.lang.flag.form</field>
+            <field name="model">res.lang</field>
+            <field name="inherit_id" ref="base.res_lang_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="icon" widget='image' ></field>
+                </xpath>
+            </field>
+		</record>
+		
+		<record model="ir.ui.view" id="res_lang_flag_tree">
+		    <field name="name">res.lang.tree</field>
+            <field name="model">res.lang</field>
+            <field name="inherit_id" ref="base.res_lang_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="icon" widget='image' ></field>
+                </xpath>
+            </field>
+		</record>
+
+	</data>
+</openerp>
