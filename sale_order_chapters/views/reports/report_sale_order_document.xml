@@ -69,7 +69,7 @@
 							</t>
 							<tr>
 								<td colspan="5" class="text-right" style="vertical-align:middle;"><strong t-esc="u'Total Presupuesto Parcial Num.%d: %s' % (numChapters, c.name.upper())"/></td>	
-								<td class="text-right" style="vertical-align:middle; border:1px solid black; border-witdh: 1px 0 0 0;"><strong style="font-size:14px;" t-esc="'%.2f%s' % (totalSubPrice, o.currency_id.symbol or '')"/></td>
+								<td class="text-right" style="vertical-align:middle; border:1px solid black; border-witdh: 1px 0 0 0;"><strong style="font-size:14px;" t-esc="totalSubPrice" t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></td>
 							</tr>
 						</tbody>
 					</table>
