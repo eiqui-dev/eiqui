@@ -55,7 +55,7 @@
 									<t t-set="line_name_desc" t-value="l.get_name_description()[0]"/>
 									<td><strong t-esc="'%d.%d' % (numChapters, numLines)"/></td>
 									<td><strong t-esc="l.product_uom.name"/></td>
-									<td colspan="3"><span t-field="l.name"/></td>
+									<td colspan="3" style="text-align:justify;"><span t-field="l.name"/></td>
 									<td>&amp;nbsp;</td>
 								</tr>
 								<tr>
